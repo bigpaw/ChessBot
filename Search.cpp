@@ -9,6 +9,8 @@ void StartSearch()
 	bool openingMoveFound = false;
 	currentDepth = 0;
 	int score = 0;
+	memset(killerMoves, 0, sizeof(killerMoves));
+	memset(historyHeuristicBoard, 0, sizeof(historyHeuristicBoard));
 
 	if (numOutOfOpeningBook < NumberOpeningBookTrials)
 	{
@@ -333,7 +335,6 @@ int SearchRoot(int depth, int alpha, int beta)
 
 int AlphaBeta(int depth, int alpha, int beta, bool nullMoveAllowed)
 {
-	DrawRepetitionOrFifty();
 #ifdef DEBUG_SEARCHTREE
 	for (int i = 1; i < currentDepth; i++)
 		Debugger::searchTreeSs << "\t";
